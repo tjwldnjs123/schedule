@@ -2,8 +2,7 @@ name: Node.js Cron Job
 
 on:
   schedule:
-    # 매일 자정 UTC 시간에 실행
-    - cron: '0 0 * * *'
+    - cron: '*/1 * * * *'
   workflow_dispatch: # 수동 실행 가능
 
 jobs:
