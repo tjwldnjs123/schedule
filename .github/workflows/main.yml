@@ -1,40 +1,27 @@
-name: CI/CD Pipeline
+name: Node.js Cron Job
 
 on:
-  push:
-    branches:
-      - master  # mamasterin 브랜치에 푸시될 때 실행
-  pull_request:
-    branches:
-      - master  # PR이 열릴 때 실행
-  workflow_dispatch:  # 수동 실행 가능
+  schedule:
+    # 매일 자정 UTC 시간에 실행
+    - cron: '0 0 * * *'
+  workflow_dispatch: # 수동 실행 가능
 
 jobs:
-  build:
+  run-script:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
-          node-version: 18
+          node-version: '18' # 사용할 Node.js 버전
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: npm install
 
-      # - name: Run Tests
-      #   run: npm start
-
-  deploy:
-    needs: build  # Build 단계가 성공해야 실행됨
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-
-      - name: Deploy to Server
-        run: echo "🚀 Deploying application..."
+      - name: Run script
+        run: node server.js # 실행할 Node.js 스크립트
+       
