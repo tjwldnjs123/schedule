@@ -21,7 +21,7 @@ async function getZone() {
         'Content-Type': 'application/json',
       },
     });
-  
+  console.log(response)
     if (response.data.Data.ZONE) {
       ZONE = response.data.Data.ZONE;
       console.log("ZONE 조회 성공:", ZONE);
