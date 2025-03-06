@@ -2,7 +2,7 @@ name: Node.js Cron Job
 
 on:
   schedule:
-    - cron: '*/6 * * * *'
+    - cron: '0 9 * * *'
 
   workflow_dispatch: # 수동 실행 가능
 
