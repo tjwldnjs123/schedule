@@ -23,11 +23,16 @@ jobs:
         run: npm install
 
       - name: Set environment variables
+        run: |
+          echo "COM_CODE=${{ secrets.COM_CODE }}" >> $GITHUB_ENV
+          echo "USER_ID=${{ secrets.USER_ID }}" >> $GITHUB_ENV
+          echo "API_CERT_KEY=${{ secrets.API_CERT_KEY }}" >> $GITHUB_ENV
+          echo "LAN_TYPE=${{ secrets.LAN_TYPE }}" >> $GITHUB_ENV
+
+      - name: Run script
         env:
           COM_CODE: ${{ secrets.COM_CODE }}
           USER_ID: ${{ secrets.USER_ID }}
           API_CERT_KEY: ${{ secrets.API_CERT_KEY }}
           LAN_TYPE: ${{ secrets.LAN_TYPE }}
-
-      - name: Run script
         run: node server.js
