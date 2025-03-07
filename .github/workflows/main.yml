@@ -2,32 +2,32 @@ name: Node.js Cron Job
 
 on:
   schedule:
-    - cron: '0 9 * * *'
-
+    - cron: '0 9 * * *' # 매일 오전 9시(UTC 기준) 실행
   workflow_dispatch: # 수동 실행 가능
 
 jobs:
   run-script:
     runs-on: ubuntu-latest
+    timeout-minutes: 10 # 10분 이상 실행되면 자동 종료
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '18' # 사용할 Node.js 버전
+          node-version: '18'
 
       - name: Install dependencies
         run: npm install
 
       - name: Set environment variables
-        run: |
-          echo "COM_CODE=${{ secrets.COM_CODE }}" >> $GITHUB_ENV
-          echo "USER_ID=${{ secrets.USER_ID }}" >> $GITHUB_ENV
-          echo "API_CERT_KEY=${{ secrets.API_CERT_KEY }}" >> $GITHUB_ENV
-          echo "LAN_TYPE=${{ secrets.LAN_TYPE }}" >> $GITHUB_ENV
+        env:
+          COM_CODE: ${{ secrets.COM_CODE }}
+          USER_ID: ${{ secrets.USER_ID }}
+          API_CERT_KEY: ${{ secrets.API_CERT_KEY }}
+          LAN_TYPE: ${{ secrets.LAN_TYPE }}
 
       - name: Run script
-        run: node server.js # 실행할 Node.js 스크립트
+        run: node server.js
