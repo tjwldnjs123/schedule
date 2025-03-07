@@ -235,18 +235,18 @@ async function saveQuotation() {
         "ADD_NUM_03": "",
         "ADD_NUM_04": "",
         "ADD_NUM_05": "",
-        "ADD_CD_01": "",
-        "ADD_CD_02": "",
-        "ADD_CD_03": "",
-        "ADD_CD_NM_01": "",
-        "ADD_CD_NM_02": "",
-        "ADD_CD_NM_03": "",
-        "ADD_CDNM_01": "",
-        "ADD_CDNM_02": "",
-        "ADD_CDNM_03": "",
-        "ADD_DATE_01": "",
-        "ADD_DATE_02": "",
-        "ADD_DATE_03": ""
+        // "ADD_CD_01": "",
+        // "ADD_CD_02": "",
+        // "ADD_CD_03": "",
+        // "ADD_CD_NM_01": "",
+        // "ADD_CD_NM_02": "",
+        // "ADD_CD_NM_03": "",
+        // "ADD_CDNM_01": "",
+        // "ADD_CDNM_02": "",
+        // "ADD_CDNM_03": "",
+        // "ADD_DATE_01": "",
+        // "ADD_DATE_02": "",
+        // "ADD_DATE_03": ""
        }
       }]
  }
